@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
  
 using namespace std;
  
@@ -6,7 +7,8 @@ using namespace std;
 void Merge(int *a, int low, int high, int mid)
 {
 	// We have low to mid and mid+1 to high already sorted.
-	int i, j, k, temp[high-low+1];
+	int i, j, k;
+ vector<int> temp(high-low+1);
 	i = low;
 	k = 0;
 	j = mid + 1;
@@ -73,15 +75,16 @@ int main()
 	int n, i;
 	cout<<"\nEnter the number of data element to be sorted: ";
 	cin>>n;
+ if (!cin || n < 0 || n > 1000000) return 1;
  
-	int arr[n];
+	vector<int> arr(n);
 	for(i = 0; i < n; i++)
 	{
 		cout<<"Enter element "<<i+1<<": ";
-		cin>>arr[i];
+		if (!(cin>>arr[i])) return 1;
 	}
  
-	MergeSort(arr, 0, n-1);
+	MergeSort(arr.data(), 0, n-1);
  
 	// Printing the sorted data.
 	cout<<"\nSorted Data ";
