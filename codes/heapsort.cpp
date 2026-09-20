@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void MAX_HEAPIFY(int a[], int i, int n)
@@ -46,13 +47,14 @@ int main()
   int n;
   cout<<"Enter the size of the array"<<endl;
   cin>>n;
-  int a[n];
+ if (!cin || n < 0 || n > 1000000) return 1;
+  vector<int> a(n+1);
   cout<<"Enter the elements in the array"<<endl;
   for (int i = 1; i <= n; i++)
     {
-      cin>>a[i];
+      if (!(cin>>a[i])) return 1;
     }
-  HEAPSORT(a, n);
+  HEAPSORT(a.data(), n);
   cout<<":::::::SORTED FORM::::::"<<endl;
   for (int i = 1; i <= n; i++)
     {

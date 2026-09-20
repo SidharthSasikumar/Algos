@@ -1,24 +1,26 @@
 /* C++ Program - Insertion Sort */
 		
-#include<iostream.h>
-#include<conio.h>
-void main()
+#include<iostream>
+
+using namespace std;
+int main()
 {
-	clrscr();
+
 	int size, arr[50], i, j, temp;
 	cout<<"Enter Array Size : ";
 	cin>>size;
+ if (!cin || size < 0 || size > 50) return 1;
 	cout<<"Enter Array Elements : ";
 	for(i=0; i<size; i++)
 	{
-		cin>>arr[i];
+		if (!(cin>>arr[i])) return 1;
 	}
 	cout<<"Sorting array using selection sort ... \n";
 	for(i=1; i<size; i++)
 	{
 		temp=arr[i];
 		j=i-1;
-		while((temp<arr[j]) && (j>=0))
+		while((j>=0) && (temp<arr[j]))
 		{
 			arr[j+1]=arr[j];
 			j=j-1;
@@ -30,5 +32,5 @@ void main()
 	{
 		cout<<arr[i]<<" ";
 	}
-	getch();
+
 }
